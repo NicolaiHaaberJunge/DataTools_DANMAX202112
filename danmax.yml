@@ -1,0 +1,12 @@
+name: DanMax
+channels:
+  - defaults
+dependencies:
+  - jupyterlab
+  - pandas
+  - matplotlib
+  - ipympl
+  - numpy
+  - xarray
+  - openpyxl
+prefix: /home/nicolaihj/miniconda3/envs/DanMax
