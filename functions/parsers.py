@@ -25,6 +25,7 @@ def every_10th_scan(folder, keyname=".txt"):
     
     
 def join_xrd_topas(dftp, dfxrd):
+
     
     dftp = pd.merge(dftp, dfxrd, on="scan")
     dftp = dftp.set_index("XRDTimeStamp")
@@ -44,8 +45,6 @@ def danmax_xrd(file, timestamp_name="XRDTimeStamp", xscan=False):
     Returns:
         (dataframe): Dataframe with xrd timestamp data.
     """
-    
-    
     
     df_xrd = pd.read_csv(
         file,
