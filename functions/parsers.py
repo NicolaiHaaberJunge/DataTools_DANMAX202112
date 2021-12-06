@@ -84,7 +84,7 @@ def heater(file, sheet_name="Log", timestamp_name="HistoricalTimeString"):
         file (str): Heater data file, .xlsm
         sheet_name (str, optional): Sheet Name in the excel file. Defaults to "Log".
         timestamp_name (str, optional): The column name containing the timestamp in the excel file. 
-                                        Defaults to "HistoricalTimeString".
+        Defaults to "HistoricalTimeString".
 
     Returns:
         (dataframe): Dataframe with heater data.

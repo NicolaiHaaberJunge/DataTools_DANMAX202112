@@ -66,13 +66,11 @@ Haldor Topsøe:  MS data, Heater data, Flow data.</p>
 <dt class="sig sig-object py" id="functions.parsers.heater">
 <span class="sig-prename descclassname"><span class="pre">functions.parsers.</span></span><span class="sig-name descname"><span class="pre">heater</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Log'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HistoricalTimeString'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.parsers.heater" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function for parsing data from Topsøe MS system into a pandas dataframe.</p>
-<dl>
+<dl class="simple">
 <dt>Args:</dt><dd><p>file (str): Heater data file, .xlsm
 sheet_name (str, optional): Sheet Name in the excel file. Defaults to “Log”.
-timestamp_name (str, optional): The column name containing the timestamp in the excel file.</p>
-<blockquote>
-<div><p>Defaults to “HistoricalTimeString”.</p>
-</div></blockquote>
+timestamp_name (str, optional): The column name containing the timestamp in the excel file. 
+Defaults to “HistoricalTimeString”.</p>
 </dd>
 <dt>Returns:</dt><dd><p>(dataframe): Dataframe with heater data.</p>
 </dd>
