@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Data Interpolation &#8212; DanMax Data Analysis 202112  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
@@ -32,35 +33,28 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-functions.interpolation">
+  <section id="module-functions.interpolation">
 <span id="data-interpolation"></span><h1>Data Interpolation<a class="headerlink" href="#module-functions.interpolation" title="Permalink to this headline">¶</a></h1>
 <p>Function for interpolative merging of timeseries dataframes.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="functions.interpolation.interpolative_merge">
 <span class="sig-prename descclassname"><span class="pre">functions.interpolation.</span></span><span class="sig-name descname"><span class="pre">interpolative_merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df1_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df2_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.interpolation.interpolative_merge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Functions which merges pandas timeseries dataframes by interpolating data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df1</strong> (<em>dataframe</em>) – The dataframe to merge data into.</p></li>
-<li><p><strong>df2</strong> (<em>dataframe</em>) – The dataframe to merge data from.</p></li>
-<li><p><strong>df1_time</strong> (<em>str</em>) – Column name for timeseries in df1</p></li>
-<li><p><strong>df2_time</strong> (<em>str</em>) – Column name for timeseried in df2</p></li>
-<li><p><strong>columns</strong> (<em>list</em>) – Columns from df2 to be merged and interpolated into df1</p></li>
-<li><p><strong>floor</strong> (<em>list</em><em>, </em><em>optional</em>) – Columns in df2 which should be floored, rounding down to nearest int. Defaults to [].</p></li>
-<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the merge will overwrite df1. Defaults to False.</p></li>
-</ul>
+<dl class="simple">
+<dt>Args:</dt><dd><p>df1 (dataframe): The dataframe to merge data into.
+df2 (dataframe): The dataframe to merge data from.
+df1_time (str): Column name for timeseries in df1
+df2_time (str): Column name for timeseried in df2
+columns (list): Columns from df2 to be merged and interpolated into df1
+floor (list, optional): Columns in df2 which should be floored, rounding down to nearest int. Defaults to [].
+inplace (bool, optional): If True, the merge will overwrite df1. Defaults to False.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Merged and interpolated dataframe.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>(dataframe)</p>
+<dt>Returns:</dt><dd><p>(dataframe): Merged and interpolated dataframe.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
           </div>
@@ -121,7 +115,7 @@
       &copy;2021, Nicolai Haaber Junge.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
