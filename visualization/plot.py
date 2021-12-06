@@ -58,11 +58,18 @@ def plot(df):
     with output:
         fig_spec, axL = plt.subplots(figsize=[8, 5])
 
-        df.plot(x=dropdown_xaxis.value, y=dropdown_left.value, ax=axL, legend=False)
+        df.plot(x=dropdown_xaxis.value, y=dropdown_left.value, ax=axL, c="b", legend=False)
         lineLeft = axL.get_lines()[0]
         axL.set_ylabel(dropdown_left.value)
-        
+        axL.spines['left'].set_color('blue')
+        axL.yaxis.label.set_color('blue')
+        axL.tick_params(axis='y', colors='blue')
+
         axR = axL.twinx()
+        
+        axR.spines['right'].set_color('red')
+        axR.yaxis.label.set_color('red')
+        axR.tick_params(axis='y', colors='red')
 
         df.plot(x=dropdown_xaxis.value, y=dropdown_left.value, ax=axR, c="r", legend=False)
         lineRight = axR.get_lines()[0]

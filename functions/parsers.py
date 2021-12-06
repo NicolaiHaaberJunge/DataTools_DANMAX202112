@@ -6,9 +6,36 @@ Haldor Topsøe:  MS data, Heater data, Flow data.
 
 import pandas as pd
 import re
+import os
+
+def every_10th_scan(folder, keyname=".txt"):
+    
+    wanted_files = sorted([f for f in os.listdir(folder) if f.endswith(".txt")])
+
+    output_file = open(os.path.join(folder, "combined.txt"), "a+")
+    for file in wanted_files:
+        with open(os.path.join(folder,file), "r") as f:
+            lines = f.readlines()
+            for line in lines:
+                idx  = int(line.split(',')[0])
+                if idx % 10 == 0:
+                    output_file.write(line)
+
+    output_file.close()
+    
+    
+def join_xrd_topas(dftp, dfxrd):
+    
+    dftp = pd.merge(dftp, dfxrd, on="scan")
+    dftp = dftp.set_index("XRDTimeStamp")
+    dftp.index = dftp.index.floor(freq="s")
+    dftp.index.name = "XRDTimeStamp"
+    dftp = dftp.reset_index()
+    
+    return dftp
 
 
-def danmax_xrd(file, timestamp_name="XRDTimeStamp"):
+def danmax_xrd(file, timestamp_name="XRDTimeStamp", xscan=False):
     """Function for parsing DanMax xrd data.
 
     Args:
@@ -18,14 +45,15 @@ def danmax_xrd(file, timestamp_name="XRDTimeStamp"):
         (dataframe): Dataframe with xrd timestamp data.
     """
     
+    
+    
     df_xrd = pd.read_csv(
         file,
         sep=",",
-        usecols=[1],
-        names=[timestamp_name],
+        names=["scan", "sample" ,timestamp_name],
         parse_dates=[timestamp_name],
         date_parser=lambda x: pd.to_datetime(x, format='%Y-%m-%d %H:%M:%S.%f')
-    ).iloc[::10].reset_index()
+    )
 
     return df_xrd
 
@@ -41,10 +69,13 @@ def topas(file):
 
     df_topas = pd.read_csv(file, sep=':', names=[i for i in range(0, 150)])
     df_topas.dropna(axis=1, how="all", inplace=True)
+    df_topas.set_index(0, inplace=True)
+    df_topas.index.name = "scan"
     new_col_names = dict(zip(df_topas.iloc[:, 1::2].columns.to_list(), df_topas.iloc[0, ::2].values))
     df_topas.rename(columns=new_col_names, inplace=True)
     df_topas = df_topas.iloc[:, 1::2]
-
+    df_topas.reset_index(inplace=True)
+    df_topas.rename(columns=lambda x: x.strip(), inplace=True)
     return df_topas
 
 def heater(file, sheet_name="Log", timestamp_name="HistoricalTimeString"):

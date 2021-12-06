@@ -12,7 +12,7 @@ Welcome to DanMax Data Analysis 202112's documentation!
 
    interpolation.rst
    parsers.rst
-   visualization.rst
+   cleaners.rst
 
 
 Indices and tables
