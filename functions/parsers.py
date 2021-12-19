@@ -24,14 +24,30 @@ def every_10th_scan(folder, keyname=".txt"):
     output_file.close()
     
     
-def join_xrd_topas(dftp, dfxrd):
-
+def join_xrd_topas(dftp, dfxrd, xscans=False):
+    """Function which joins dataframes from
+    Topas and XRD Metadata. 
     
+    Args:
+        dftp (dataframe): Topas dataframe.
+        dfxrd (dataframe): Dataframe with xrd metadata.
+        xscans (bool, optional): If xrd metadata contains x-scans.
+    Returns:
+        dftp (dataframe)
+    
+    """
+
+    dftp['scan'] = dftp['scan'].str.strip()
+    dfxrd['scan'] = dfxrd['scan'].str.strip()
+          
     dftp = pd.merge(dftp, dfxrd, on="scan")
     dftp = dftp.set_index("XRDTimeStamp")
     dftp.index = dftp.index.floor(freq="s")
     dftp.index.name = "XRDTimeStamp"
     dftp = dftp.reset_index()
+    
+    if xscans:
+        dftp['x'] = dftp['x'].round(2)
     
     return dftp
 
@@ -46,10 +62,15 @@ def danmax_xrd(file, timestamp_name="XRDTimeStamp", xscan=False):
         (dataframe): Dataframe with xrd timestamp data.
     """
     
+    if xscan:
+        names = ["scan", "sample" , timestamp_name, "x"]
+    else:
+        names = ["scan", "sample" , timestamp_name]
+    
     df_xrd = pd.read_csv(
         file,
         sep=",",
-        names=["scan", "sample" ,timestamp_name],
+        names=names,
         parse_dates=[timestamp_name],
         date_parser=lambda x: pd.to_datetime(x, format='%Y-%m-%d %H:%M:%S.%f')
     )

@@ -40,7 +40,7 @@ def plot(df):
         options=xcols,
         description='X-Axis',
         disabled=False,
-        layout=widgets.Layout(height="200px", margin="1000px 1000px 1000px 1000px 1000px")
+        layout=widgets.Layout(height="200px")
     )
 
 
@@ -137,4 +137,4 @@ def plot(df):
     right_side = widgets.VBox([dropdown_right, logYRigth])
     main = widgets.HBox([left_side, output, right_side])
 
-    return main
+    return display(main)
